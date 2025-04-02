@@ -1,0 +1,29 @@
+// {
+//     "files": [],
+//     "references": [
+//       {
+//         "path": "./jsconfig.app.json"
+//       },
+//       {
+//         "path": "./tsconfig.node.json"
+//       }
+//     ],
+//     "compilerOptions": {
+//       "baseUrl": ".",
+//       "paths": {
+//         "@/*": ["./src/*"]
+//       }
+//     }
+//   }
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
