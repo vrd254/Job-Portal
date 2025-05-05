@@ -18,7 +18,7 @@ const Login = () => {
         password: "",
         role: "",
     });
-    const { loading,user } = useSelector(store => store.auth);
+    const { loading, user } = useSelector(store => store.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -48,11 +48,13 @@ const Login = () => {
             dispatch(setLoading(false));
         }
     }
-    useEffect(()=>{
-        if(user){
+
+    useEffect(() => {
+        if (user) {
             navigate("/");
         }
-    },[])
+    }, []);
+
     return (
         <div>
             <Navbar />
@@ -77,9 +79,15 @@ const Login = () => {
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="********"
                         />
+                        <div className="text-right mt-1">
+                            <Link to="/forgot-password" className="text-blue-600 text-sm hover:underline">
+                                Forgot Password?
+                            </Link>
+                        </div>
                     </div>
+
                     <div className='flex items-center justify-between'>
                         <RadioGroup className="flex items-center gap-4 my-5">
                             <div className="flex items-center space-x-2">
@@ -106,10 +114,19 @@ const Login = () => {
                             </div>
                         </RadioGroup>
                     </div>
+
                     {
-                        loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">Login</Button>
+                        loading
+                            ? <Button className="w-full my-4" disabled>
+                                <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait
+                              </Button>
+                            : <Button type="submit" className="w-full my-4">Login</Button>
                     }
-                    <span className='text-sm'>Don't have an account? <Link to="/signup" className='text-blue-600'>Signup</Link></span>
+
+                    <span className='text-sm'>
+                        Don't have an account?{" "}
+                        <Link to="/signup" className='text-blue-600'>Signup</Link>
+                    </span>
                 </form>
             </div>
         </div>
